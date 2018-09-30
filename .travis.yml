@@ -4,10 +4,5 @@ python:
     - 3.5
     - 3.6
 
-jobs:
-    include:
-        - stage: test
-        - script: make test
-
 script:
     - make test
