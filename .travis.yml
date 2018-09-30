@@ -1,0 +1,15 @@
+language: python
+
+python:
+    - 3.5
+    - 3.6
+
+jobs:
+    include:
+        - stage: test
+        - script: make test
+        - stage: lint
+        - script: make lint
+
+script:
+    - make test
