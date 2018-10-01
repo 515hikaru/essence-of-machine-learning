@@ -20,12 +20,26 @@ class TestQuadEquation(unittest.TestCase):
         self.assertAlmostEqual(alpha, 3.0, delta=eps)
         self.assertAlmostEqual(beta, 2.0, delta=eps)
 
+    def test_solve_less_error_eq(self):
+        """x^2+5x+6を解く"""
+        eps = 1e-18
+        alpha, beta = qeq.qeq2(1, 5, 6)
+        self.assertAlmostEqual(alpha, -3.0, delta=eps)
+        self.assertAlmostEqual(beta, -2.0, delta=eps)
+
+    def test_solve_less_error_eq2(self):
+        """x^2-5x+6を解く"""
+        eps = 1e-18
+        alpha, beta = qeq.qeq2(1, -5, 6)
+        self.assertAlmostEqual(alpha, 3.0, delta=eps)
+        self.assertAlmostEqual(beta, 2.0, delta=eps)
+
     def test_solve_error_large(self):
         """
         誤差が大きくなるテストケース
         (x+0.000000001)(x+1) = 0
         """
         eps = 1e-18
-        alpha, beta = qeq.qeq(1, 1.000000001, 0.000000001)
-        self.assertAlmostEqual(alpha, -0.000000001, delta=eps)
-        self.assertAlmostEqual(beta, -1.0, delta=eps)
+        alpha, beta = qeq.qeq2(1, 1.000000001, 0.000000001)
+        self.assertAlmostEqual(alpha, -1.0, delta=eps)
+        self.assertAlmostEqual(beta, -1e-9, delta=eps)
