@@ -26,8 +26,9 @@ def test_softplus_value2():
 @pytest.mark.xfail
 def test_softplus_inf():
     """
-    np.exe がオーバーフローしたときの計算
-    このテストは失敗する
+    np.exp がオーバーフローしたときの計算
+
+    このテストは対策ができていないので失敗する
     """
     y = softplus.softplus(1000)
     assert y < 10 * 5
@@ -53,7 +54,9 @@ def test_softplus2_value2():
 
 def test_softplus2_inf():
     """
-    np.exe がオーバーフローしたときの計算
+    np.exp をそのまま計算するとオーバーフローする場合
+    
+    対策済みなのでこのテストではオーバーフローせず成功する
     """
     y = softplus.softplus2(1000)
     assert y < 10 ** 4
