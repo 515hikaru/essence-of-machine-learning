@@ -46,8 +46,8 @@ class TestQuadEquation(unittest.TestCase):
         """
         eps = 1.0 * (10 ** (-18))
         alpha, beta = qeq.qeq(1, 1.000000001, 0.000000001)
-        self.assertAlmostEqual(alpha, -0.000000001, delta=eps)
         self.assertAlmostEqual(beta, -1.0, delta=eps)
+        self.assertAlmostEqual(alpha, -0.000000001, delta=eps)  # fail here
 
     def test_solve_error_large(self):
         """
