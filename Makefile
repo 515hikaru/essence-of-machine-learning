@@ -1,11 +1,11 @@
 .PHONY := test
 
-test: resolve
+test: .resolve
 	python -m pytest --cov=./tests
 
-lint: resolve
+lint: .resolve
 	pylint --errors-only numeric_calc
 
-resolve: requirements.txt
+.resolve: requirements.txt
 	- pip install -r requirements.txt
-	- touch resolve
+	- touch .resolve
